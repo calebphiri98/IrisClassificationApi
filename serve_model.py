@@ -10,11 +10,13 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model = joblib.load(os.path.join(BASE_DIR, 'iris_model.pkl'))
 
+
 @app.route('/')
 def home():
     return jsonify({
         "message": "Iris Model API is running!"
     })
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -32,9 +34,7 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+
 if __name__ == '__main__':
-port = int(os.environ.get('PORT', 80))
-	app.run(host='0.0.0.0', port=port)
-
- 
-
+    port = int(os.environ.get('PORT', 80))
+    app.run(host='0.0.0.0', port=port)
