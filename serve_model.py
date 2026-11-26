@@ -1,5 +1,4 @@
-
-from flask import Flask, request, jsonify
+﻿from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import numpy as np
@@ -7,12 +6,13 @@ import os
 
 app = Flask(__name__)
 
-# Allow requests from the React development server
+# Allow local development and the deployed Vercel frontend
 CORS(app, resources={
     r"/*": {
         "origins": [
             "http://localhost:5173",
-            "http://127.0.0.1:5173"
+            "http://127.0.0.1:5173",
+            "https://calebirisai.vercel.app"
         ]
     }
 })
